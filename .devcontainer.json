@@ -1,0 +1,43 @@
+{
+	/**
+	* Name of the container. Should be the project name.
+	*/
+	"name": "Rust Test Bench",
+	/* 	"build": {
+		"dockerfile": "Dockerfile"
+	}, */
+	"dockerComposeFile": "./docker-compose.yml",
+	"service": "rust-env",
+	/* "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached", */
+	"workspaceFolder": "/workspace",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"michelemelluso.code-beautifier",
+				"mikestead.dotenv",
+				"mhutchie.git-graph",
+				"ms-vsliveshare.vsliveshare",
+				"ms-vsliveshare.vsliveshare-audio",
+				"ms-vsliveshare.vsliveshare-pack",
+				"PKief.material-icon-theme",
+				"rust-lang.rust-analyzer",
+				"jinxdash.prettier-rust"
+			],
+			"settings": {
+				// Editor Settings
+				"editor.formatOnPaste": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnType": true,
+				"workbench.iconTheme": "material-icon-theme",
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": true
+				},
+				// Prettier
+				"prettier.useTabs": true,
+				"prettier.enableDebugLogs": true,
+				"editor.defaultFormatter": "jinxdash.prettier-rust"
+			}
+		}
+	},
+	"shutdownAction": "stopCompose"
+}

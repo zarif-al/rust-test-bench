@@ -1,0 +1,9 @@
+services:
+  rust-env:
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    restart: on-failure:10
+    volumes:
+      - .:/workspace

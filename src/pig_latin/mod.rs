@@ -1,8 +1,6 @@
-use std::fmt::format;
-
 pub fn get_pig_latin_translation(text: &String) -> String {
     const VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u'];
-    let char_vec: Vec<char> = text.chars().collect();
+    let char_vec: Vec<char> = text.to_lowercase().chars().collect();
     let starts_with_vowel = VOWELS.iter().any(|&c| c == char_vec[0]);
     if starts_with_vowel {
         let new_string = format!("{}-{}", &text, "hay");

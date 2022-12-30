@@ -1,4 +1,5 @@
-Rust Test bench
+### Rust Test bench
+
 This is a test bench for trying out stuff with Rust as I am learning the language.
 
 To run the application, please perform the following steps:

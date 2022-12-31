@@ -13,9 +13,10 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
     println!("\nPlease enter the employee name or enter 0 to exit.\n");
 
     io::stdin().read_line(&mut employee_name).expect("Failed to read line");
+    employee_name = employee_name.trim().to_string();
 
     // Check if the user has entered a valid number
-    let exit_command: u32 = match employee_name.trim().parse() {
+    let exit_command: u32 = match employee_name.parse() {
         Err(_) => { 1 }
         Ok(num) => { num }
     };
@@ -26,7 +27,8 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
     }
 
     // Check if employee exists
-    let existing_employee = employees.get(&employee_name).unwrap_or(&String::from("None"));
+    let binding = &String::from("None");
+    let existing_employee = employees.get(&employee_name).unwrap_or(binding);
 
     if existing_employee == "None" {
         println!("\nThis employee already exists!\n");

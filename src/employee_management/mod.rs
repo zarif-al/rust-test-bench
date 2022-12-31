@@ -1,13 +1,12 @@
 mod add_employee;
 mod add_department;
 mod view_employees;
-mod numerical_input;
 
 use std::collections::HashMap;
 use add_employee::add_employee;
 use add_department::add_department;
 use view_employees::view_employees;
-use numerical_input::take_numberical_input;
+use crate::numerical_input::take_numberical_input;
 
 pub fn employee_management_system() {
     let mut employees: HashMap<String, String> = HashMap::new();

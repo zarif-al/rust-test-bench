@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use crate::numerical_input::take_numberical_input;
+use crate::custom_input::take_numberical_input;
 // TODO: Create two specific functions.
 // view_all_employees -> View all employees by departments sorted.
 // view_employees_by_department -> View employees of a specified department.

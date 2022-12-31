@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-use std::io;
 use crate::numerical_input::take_numberical_input;
 // TODO: Create two specific functions.
 // view_all_employees -> View all employees by departments sorted.
@@ -20,40 +19,26 @@ pub fn view_employees(departments: &Vec<String>, employees: &HashMap<String, Str
 }
 
 fn view_employees_by_department(departments: &Vec<String>, employees: &HashMap<String, String>) {
-    let department_length = i32::try_from(departments.len()).unwrap_or(0);
-    let department_selection: i32;
-    let mut input = String::new();
+    let department_length = u32::try_from(departments.len()).unwrap_or(0);
+    let user_input: u32;
 
     println!("\nPlese select a department.");
     for (i, el) in departments.iter().enumerate() {
         println!("{}: {}", i, el);
     }
 
-    loop {
-        input.clear();
-        io::stdin().read_line(&mut input).expect("Failed to read line");
+    user_input = take_numberical_input(department_length);
 
-        // Reject invalid number input and restart current loop
-        let user_input: i32 = match input.trim().parse() {
-            Err(_) => {
-                println!("\nPlease input a valid number\n");
-                continue;
-            }
-            Ok(num) => { num }
-        };
+    let binding = String::from("Null");
+    let selected_department = departments.get(user_input as usize).unwrap_or(&binding);
 
-        // Reject invalid range input and restart the loop
-        if user_input >= department_length {
-            println!("\nPlease input a valid number\n");
-            continue;
-        }
-
-        department_selection = user_input;
-        break;
+    if selected_department == &binding {
+        println!("\nThere was an error processing your request.\n");
+        return;
     }
 
     for (k, v) in employees {
-        if &v == &departments.get(department_selection as usize).unwrap_or(&String::from("Null")) {
+        if v == selected_department {
             println!("{}", k);
         }
     }

@@ -30,15 +30,18 @@ fn view_employees_by_department(departments: &Vec<String>, employees: &HashMap<S
     user_input = take_numberical_input(department_length);
 
     let binding = String::from("Null");
-    let selected_department = departments.get(user_input as usize).unwrap_or(&binding);
+    let selected_department = departments
+        .get(user_input as usize)
+        .unwrap_or(&binding)
+        .to_string();
 
-    if selected_department == &binding {
+    if selected_department == binding {
         println!("\nThere was an error processing your request.\n");
         return;
     }
 
     for (k, v) in employees {
-        if v == selected_department {
+        if v == &selected_department {
             println!("{}", k);
         }
     }

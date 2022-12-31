@@ -19,7 +19,7 @@ pub fn take_numberical_input(max: u32) -> u32 {
             Ok(num) => { num }
         };
 
-        if user_input >= max {
+        if user_input > max {
             println!("\nPlease input a valid number\n");
             continue;
         }

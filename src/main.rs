@@ -1,4 +1,6 @@
 mod employee_management;
+mod numerical_input;
+
 use crate::employee_management::employee_management_system;
 
 /* mod mean_and_median;

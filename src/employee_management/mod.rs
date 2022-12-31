@@ -13,12 +13,13 @@ pub fn employee_management_system() {
     let mut input = String::new();
 
     loop {
-        //TODO: Add implmentation for adding a new department.
-        //TODO: Add implmentation for modifying existing employees.
+        // TODO: Add implmentation for adding a new department.
+        // TODO: Add method to view all employees, or by department.
         println!("\nWelcome to the Employee Management System\n");
         println!("1. View employees");
         println!("2. Add a new employee");
-        println!("3. Exit");
+        println!("3. Add a new department");
+        println!("4. Exit");
 
         input.clear();
         io::stdin().read_line(&mut input).expect("Failed to read line");
@@ -30,9 +31,9 @@ pub fn employee_management_system() {
             Ok(num) => { num }
         };
 
-        if options_input == 3 {
+        if options_input == 4 {
             break;
-        } else if options_input > 3 {
+        } else if options_input > 4 {
             println!("\nPlese enter a valid option.\n");
             continue;
         }

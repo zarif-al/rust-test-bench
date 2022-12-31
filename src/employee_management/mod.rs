@@ -2,9 +2,12 @@ use std::collections::HashMap;
 use std::io;
 use add_employee::add_employee;
 use add_department::add_department;
+use view_employees::view_employees;
 
 mod add_employee;
 mod add_department;
+mod view_employees;
+
 pub fn employee_management_system() {
     let mut employees: HashMap<String, String> = HashMap::new();
     let mut departments: Vec<String> = [
@@ -14,8 +17,6 @@ pub fn employee_management_system() {
     let mut input = String::new();
 
     loop {
-        // TODO: Add implmentation for adding a new department.
-        // TODO: Add method to view all employees, or by department.
         println!("\nWelcome to the Employee Management System\n");
         println!("0. View employees");
         println!("1. Add a new employee");
@@ -41,26 +42,22 @@ pub fn employee_management_system() {
 
         // User has entered a valid option
 
-        // Add a new employee
-        if options_input == 1 {
-            let add_employee_result = add_employee(&mut employees, &departments);
-            if add_employee_result == 0 {
-                println!("\nExit Employee Addition.\n");
-                continue;
-            } else {
-                println!("\nYou have added a new employee.");
-                println!("Employees: {:?}\n", employees);
-                continue;
-            }
+        // View all employees
+        if options_input == 0 {
+            view_employees(&departments, &employees);
+            continue;
         }
 
+        // Add a new employee
+        if options_input == 1 {
+            add_employee(&mut employees, &departments);
+            continue;
+        }
+
+        // Add a department
         if options_input == 2 {
             add_department(&mut departments);
             continue;
         }
-
-        println!("\nNot Implmented Yet\n");
-
-        // Add a new department
     }
 }

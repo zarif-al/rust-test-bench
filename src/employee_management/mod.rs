@@ -1,12 +1,13 @@
 use std::collections::HashMap;
 use std::io;
 use add_employee::add_employee;
+use add_department::add_department;
 
 mod add_employee;
-
+mod add_department;
 pub fn employee_management_system() {
     let mut employees: HashMap<String, String> = HashMap::new();
-    let departments: Vec<String> = [
+    let mut departments: Vec<String> = [
         "Department 1".to_string(),
         "Department 2".to_string(),
     ].to_vec();
@@ -41,15 +42,25 @@ pub fn employee_management_system() {
         // User has entered a valid option
 
         // Add a new employee
-        let add_employee_result = add_employee(&mut employees, &departments);
+        if options_input == 1 {
+            let add_employee_result = add_employee(&mut employees, &departments);
+            if add_employee_result == 0 {
+                println!("\nExit Employee Addition.\n");
+                continue;
+            } else {
+                println!("\nYou have added a new employee.");
+                println!("Employees: {:?}\n", employees);
+                continue;
+            }
+        }
 
-        if add_employee_result == 0 {
-            println!("\nExit Employee Addition.\n");
-            continue;
-        } else {
-            println!("\nYou have added a new employee.");
-            println!("Employees: {:?}\n", employees);
+        if options_input == 2 {
+            add_department(&mut departments);
             continue;
         }
+
+        println!("\nNot Implmented Yet\n");
+
+        // Add a new department
     }
 }

@@ -1,25 +1,26 @@
-use std::io;
+use crate::custom_input::take_string_input;
 
 pub fn add_department(departments: &mut Vec<String>) {
     // Take user input
-    println!("Please enter the new department name:");
-    let mut user_input = String::new();
+    println!("Please enter the new department name or 0 to exit:");
+    let department_name = take_string_input();
 
-    io::stdin().read_line(&mut user_input).expect("Failed to read line");
-    user_input = user_input.trim().to_string();
+    if department_name.is_empty() {
+        return;
+    }
 
     /*
     If department exists then return otherwise add it to departments vector
 	and then return.
 	*/
-    match departments.iter().find(|x| x == &&user_input) {
+    match departments.iter().find(|x| x == &&department_name) {
         Some(x) => {
             println!("\n{} alredy exists!\n", x);
             return;
         }
         None => {
-            println!("\n{}, has been successfully added!\n", user_input);
-            departments.push(user_input);
+            println!("\n{}, has been successfully added!\n", department_name);
+            departments.push(department_name);
             return;
         }
     }

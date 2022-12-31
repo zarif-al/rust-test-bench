@@ -33,8 +33,8 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
     if existing_employee != "None" {
         // Employee already exists. Ask user if they would like to modify existing user.
         println!("\nThis employee already exists! Would you like to modify their department?\n");
-        println!("1. Yes");
-        println!("2. No");
+        println!("0. Yes");
+        println!("1. No");
         let selected_user_option: u32;
 
         // Loop until a valid user response is received.
@@ -51,7 +51,7 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
                 Ok(num) => { num }
             };
 
-            if parsed_user_input < 1 || parsed_user_input > 2 {
+            if parsed_user_input > 1 {
                 println!("\nPlease input a valid option\n");
                 continue;
             }
@@ -61,7 +61,7 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
         }
 
         // If user selects "No" then exit.
-        if selected_user_option == 2 {
+        if selected_user_option == 1 {
             return 0;
         }
     }

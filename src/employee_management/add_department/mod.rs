@@ -9,9 +9,9 @@ pub fn add_department(departments: &mut Vec<String>) {
     user_input = user_input.trim().to_string();
 
     /*
-			If department exists then return otherwise add it to departments vector
-			and then return.
-		*/
+    If department exists then return otherwise add it to departments vector
+	and then return.
+	*/
     match departments.iter().find(|x| x == &&user_input) {
         Some(x) => {
             println!("\n{} alredy exists!\n", x);

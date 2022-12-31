@@ -1,5 +1,5 @@
 mod employee_management;
-mod numerical_input;
+mod custom_input;
 
 use crate::employee_management::employee_management_system;
 

@@ -25,7 +25,13 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
         return 0;
     }
 
-    //TODO: Add check if employee already exists
+    // Check if employee exists
+    let existing_employee = employees.get(&employee_name).unwrap_or(&String::from("None"));
+
+    if existing_employee == "None" {
+        println!("\nThis employee already exists!\n");
+        return 0;
+    }
 
     // Start a loop to take deparment index input
     loop {

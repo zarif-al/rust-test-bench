@@ -30,9 +30,40 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
     let binding = &String::from("None");
     let existing_employee = employees.get(&employee_name).unwrap_or(binding);
 
-    if existing_employee == "None" {
-        println!("\nThis employee already exists!\n");
-        return 0;
+    if existing_employee != "None" {
+        // Employee already exists. Ask user if they would like to modify existing user.
+        println!("\nThis employee already exists! Would you like to modify their department?\n");
+        println!("1. Yes");
+        println!("2. No");
+        let selected_user_option: u32;
+
+        // Loop until a valid user response is received.
+        loop {
+            let mut user_input = String::new();
+            io::stdin().read_line(&mut user_input).expect("Failed to read line");
+            user_input = user_input.trim().to_string();
+
+            let parsed_user_input: u32 = match user_input.parse() {
+                Err(_) => {
+                    println!("\nPlease input a valid number\n");
+                    continue;
+                }
+                Ok(num) => { num }
+            };
+
+            if parsed_user_input < 1 || parsed_user_input > 2 {
+                println!("\nPlease input a valid option\n");
+                continue;
+            }
+
+            selected_user_option = parsed_user_input;
+            break;
+        }
+
+        // If user selects "No" then exit.
+        if selected_user_option == 2 {
+            return 0;
+        }
     }
 
     // Start a loop to take deparment index input

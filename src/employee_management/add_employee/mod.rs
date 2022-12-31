@@ -1,28 +1,19 @@
 use std::convert::TryFrom;
 use std::collections::HashMap;
-use std::io;
-use crate::numerical_input::take_numberical_input;
+use crate::custom_input::{ take_numberical_input, take_string_input };
 
 pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<String>) {
     // Declare variables
     let department_length = u32::try_from(departments.len()).unwrap_or(0);
-    let mut employee_name = String::new();
-    let user_input: u32;
+    let mut user_input: u32;
 
     // Ask for user input
     println!("\nPlease enter the employee name or enter 0 to exit.\n");
 
-    io::stdin().read_line(&mut employee_name).expect("Failed to read line");
-    employee_name = employee_name.trim().to_string();
+    let employee_name = take_string_input();
 
-    // Check if the user has entered a valid number
-    let exit_command: u32 = match employee_name.parse() {
-        Err(_) => { 1 }
-        Ok(num) => { num }
-    };
-
-    // If the number is 0 then exit with 0
-    if exit_command == 0 {
+    // Check if employee name is empty
+    if employee_name.is_empty() {
         return;
     }
 
@@ -35,7 +26,6 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
         println!("\nThis employee already exists! Would you like to modify their department?\n");
         println!("0. Yes");
         println!("1. No");
-        let user_input: u32;
 
         user_input = take_numberical_input(1);
 

@@ -2,6 +2,7 @@ use std::io;
 
 pub fn take_string_input() -> String {
     let mut input = String::new();
+    println!("\nYour input:\n");
 
     io::stdin().read_line(&mut input).expect("Failed to read line");
     input = input.trim().to_string();
@@ -23,6 +24,7 @@ pub fn take_string_input() -> String {
 pub fn take_numberical_input(max: u32) -> u32 {
     let mut input = String::new();
     let mut user_input: u32;
+    println!("\nYour input:\n");
 
     // Run a loop until user enters a valid input within range.
     loop {

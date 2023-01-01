@@ -22,7 +22,7 @@ pub fn employee_management_system() {
         println!("2. Add a new department");
         println!("3. Exit");
 
-        user_input = take_numberical_input(3);
+        user_input = take_numberical_input(4);
 
         // View all employees
         if user_input == 0 {
@@ -40,6 +40,11 @@ pub fn employee_management_system() {
         if user_input == 2 {
             add_department(&mut departments);
             continue;
+        }
+
+        // Exit
+        if user_input == 3 {
+            return;
         }
     }
 }

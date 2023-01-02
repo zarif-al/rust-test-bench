@@ -46,10 +46,14 @@ fn view_employees_by_department(departments: &Vec<String>, employees: &HashMap<S
         return;
     }
 
-    /*
-     * TODO: Look into letting users know if there are no employees in the
-     * specified department.
-     */
+    let has_employee = employees.iter().any(|k| k.1 == &selected_department);
+
+    if !has_employee {
+        println!("\nThere are no employees in this department.\n");
+        return;
+    }
+
+    println!("\nEmployees in {}.\n", selected_department);
     for (k, v) in employees {
         if v == &selected_department {
             println!("{}", k);

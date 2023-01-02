@@ -66,7 +66,8 @@ fn view_all_employees(employees: &HashMap<String, String>) {
 
     employee_vector.sort_by_key(|k| k.1);
 
+    println!("\nAll Employees.\n");
     for item in employee_vector {
-        println!("{}, {}", item.0, item.1);
+        println!("Name: {}, Department: {}", item.0, item.1);
     }
 }

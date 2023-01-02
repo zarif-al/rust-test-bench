@@ -4,6 +4,11 @@ use crate::custom_input::take_numberical_input;
 pub fn view_employees(departments: &Vec<String>, employees: &HashMap<String, String>) {
     let user_input: u32;
 
+    if employees.len() == 0 {
+        println!("\nCurrently you have no employees!\n");
+        return;
+    }
+
     println!("\nHow would like to view the employee list?\n");
     println!("0. All employees in a specific department.");
     println!("1. All employees by department.");

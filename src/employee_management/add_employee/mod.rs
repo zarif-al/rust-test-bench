@@ -44,16 +44,19 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
     user_input = take_numberical_input(department_length);
 
     let binding = String::from("Null");
-    let selected_department = departments
-        .get(user_input as usize)
-        .unwrap_or(&binding)
-        .to_string();
+    let selected_department = departments.get(user_input as usize).unwrap_or(&binding);
 
-    if selected_department == binding {
+    if selected_department == &binding {
         println!("\nThere was an error processing your request.\n");
         return;
     }
 
     // Insert employee into employees Hash Map
-    employees.insert(employee_name.trim().to_string(), selected_department);
+    employees.insert(employee_name.trim().to_string(), selected_department.to_string());
+
+    println!(
+        "\n{} has been successfully added to {}!",
+        employee_name.trim().to_string(),
+        selected_department
+    )
 }

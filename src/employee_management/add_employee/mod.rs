@@ -7,6 +7,14 @@ pub fn add_employee(employees: &mut HashMap<String, String>, departments: &Vec<S
     let department_length = u32::try_from(departments.len()).unwrap_or(0);
     let mut user_input: u32;
 
+    // Check departments length
+    if department_length == 0 {
+        println!(
+            "\nCurrently there are no departments. Please add some departments before adding employees!"
+        );
+        return;
+    }
+
     // Ask for user input
     println!("\nPlease enter the employee name or enter 0 to exit.\n");
 

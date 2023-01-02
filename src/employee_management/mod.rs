@@ -10,11 +10,41 @@ use crate::custom_input::take_numberical_input;
 
 pub fn employee_management_system() {
     let mut employees: HashMap<String, String> = HashMap::new();
-    let mut departments: Vec<String> = [
-        "Department 1".to_string(),
-        "Department 2".to_string(),
-    ].to_vec();
+    let mut departments: Vec<String> = [].to_vec();
     let mut user_input: u32;
+
+    loop {
+        println!("\nDo you want to start with a seeded department and employee list?\n");
+        println!("0. Yes");
+        println!("1. No");
+
+        user_input = take_numberical_input(2);
+
+        // Seed
+        if user_input == 0 {
+            let seed_departments = [
+                String::from("Software Development"),
+                String::from("Design"),
+                String::from("Artificial Intelligence"),
+            ];
+
+            let employee_seed = HashMap::from([
+                (String::from("Sam Smith"), seed_departments[0].to_string()),
+                (String::from("Lionel Messi"), seed_departments[1].to_string()),
+                (String::from("Cristiano Ronaldo"), seed_departments[0].to_string()),
+                (String::from("Leo Brandt"), seed_departments[2].to_string()),
+            ]);
+
+            departments.append(&mut seed_departments.to_vec());
+
+            employees.extend(employee_seed);
+
+            break;
+        }
+
+        break;
+    }
+
     loop {
         println!("\nWelcome to the Employee Management System\n");
         println!("0. View employees");

@@ -14,7 +14,7 @@ pub fn employee_management_system() {
     let mut user_input: u32;
 
     loop {
-        println!("\nDo you want to start with a seeded department and employee list?\n");
+        println!("\nDo you want to start with a seed data?\n");
         println!("0. Yes");
         println!("1. No");
 
@@ -22,22 +22,24 @@ pub fn employee_management_system() {
 
         // Seed
         if user_input == 0 {
-            let seed_departments = [
+            let departments_seed = [
                 String::from("Software Development"),
                 String::from("Design"),
                 String::from("Artificial Intelligence"),
             ];
 
             let employee_seed = HashMap::from([
-                (String::from("Sam Smith"), seed_departments[0].to_string()),
-                (String::from("Lionel Messi"), seed_departments[1].to_string()),
-                (String::from("Cristiano Ronaldo"), seed_departments[0].to_string()),
-                (String::from("Leo Brandt"), seed_departments[2].to_string()),
+                (String::from("Sam Smith"), departments_seed[0].to_string()),
+                (String::from("Lionel Messi"), departments_seed[1].to_string()),
+                (String::from("Cristiano Ronaldo"), departments_seed[0].to_string()),
+                (String::from("Leo Brandt"), departments_seed[2].to_string()),
             ]);
 
-            departments.append(&mut seed_departments.to_vec());
+            departments.append(&mut departments_seed.to_vec());
 
             employees.extend(employee_seed);
+
+            println!("\nSeed Successfull!\n");
 
             break;
         }

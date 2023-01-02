@@ -46,6 +46,10 @@ fn view_employees_by_department(departments: &Vec<String>, employees: &HashMap<S
         return;
     }
 
+    /*
+     * TODO: Look into letting users know if there are no employees in the
+     * specified department.
+     */
     for (k, v) in employees {
         if v == &selected_department {
             println!("{}", k);
